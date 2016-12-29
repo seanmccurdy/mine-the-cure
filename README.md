@@ -31,22 +31,22 @@ Notable Sample Sources: GTeX, TCGA, ADNI, ArrayExpress, Gene Expression Omnibus 
 
 #Conditions
 
-*Blood Tissue*
-  -ALS\n
-  -Stroke\n
-  -Multiple Sclerosis\n
-  -Huntington's Disease\n
-  -Parkinson's Disease\n
-  -Schizophrenia\n
-  -Major Depressive Disorder\n
-  -Mild Cognitive Impairment\n
-  -Alzheimer's Disease\n
+#*Blood Tissue*
+  -ALS
+  -Stroke
+  -Multiple Sclerosis
+  -Huntington's Disease
+  -Parkinson's Disease
+  -Schizophrenia
+  -Major Depressive Disorder
+  -Mild Cognitive Impairment
+  -Alzheimer's Disease
 
-*Brain Tissue*
+#*Brain Tissue*
   -Parkinson's Disease
   -Alzheimer's Disease
 
-*Normal Tissue*
+#*Normal Tissue*
   -Brain
   -Adipose Tissue
   -Adrenal Gland
