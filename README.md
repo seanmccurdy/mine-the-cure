@@ -34,29 +34,32 @@ Notable Sample Sources: GTeX, TCGA, ADNI, ArrayExpress, Gene Expression Omnibus 
 
 ###*Blood Tissue*
   - ALS
-  - Stroke
-  - Multiple Sclerosis
+  - Alzheimer's Disease
+  - Autism
+  - Bipolar Disorder
   - Huntington's Disease
-  - Parkinson's Disease
-  - Schizophrenia
   - Major Depressive Disorder
   - Mild Cognitive Impairment
-  - Alzheimer's Disease
+  - Multiple Sclerosis
+  - Parkinson's Disease
+  - Schizophrenia
+  - Stroke
 
 ###*Brain Tissue*
-  - Parkinson's Disease
   - Alzheimer's Disease
+  - Parkinson's Disease
 
 ###*Normal Tissue*
-  - Brain
   - Adipose Tissue
   - Adrenal Gland
   - Blood Vessel
   - Bladder
+  - Brain
   - Breast
   - Blood
   - Colon
   - Esophagus
+  - Head and Neck Region
   - Heart
   - Kidney
   - Liver
