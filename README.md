@@ -31,17 +31,15 @@ Notable Sample Sources: GTeX, TCGA, ADNI, ArrayExpress, Gene Expression Omnibus 
 #Conditions
 
 Blood Tissue
-*************
-
-ALS
-Stroke
-Multiple Sclerosis
-Huntington's Disease
-Parkinson's Disease
-Schizophrenia
-Major Depressive Disorder
-Mild Cognitive Impairment
-Alzheimer's Disease
+-ALS
+-Stroke
+-Multiple Sclerosis
+-Huntington's Disease
+-Parkinson's Disease
+-Schizophrenia
+-Major Depressive Disorder
+-Mild Cognitive Impairment
+-Alzheimer's Disease
 
 Brain Tissue
 *************
