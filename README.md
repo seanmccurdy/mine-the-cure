@@ -30,7 +30,7 @@ Notable Sample Sources: GTeX, TCGA, ADNI, ArrayExpress, Gene Expression Omnibus 
 
 #Conditions
 
-+Blood Tissue
+*Blood Tissue
   -ALS
   -Stroke
   -Multiple Sclerosis
@@ -41,61 +41,58 @@ Notable Sample Sources: GTeX, TCGA, ADNI, ArrayExpress, Gene Expression Omnibus 
   -Mild Cognitive Impairment
   -Alzheimer's Disease
 
-Brain Tissue
-*************
-Parkinson's Disease
-Alzheimer's Disease
+*Brain Tissue
+  -Parkinson's Disease
+  -Alzheimer's Disease
 
-Normal Tissue
-**************
-Brain
-Adipose Tissue
-Adrenal Gland
-Blood Vessel
-Bladder
-Breast
-Blood
-Colon
-Esophagus
-Heart
-Kidney
-Liver
-Lung
-Salivary Gland
-Skin
-Small Intestines
-Spleen
-Stomach
-Testis
-Thyroid
-Uterus
-Vagina
+*Normal Tissue
+  -Brain
+  -Adipose Tissue
+  -Adrenal Gland
+  -Blood Vessel
+  -Bladder
+  -Breast
+  -Blood
+  -Colon
+  -Esophagus
+  -Heart
+  -Kidney
+  -Liver
+  -Lung
+  -Salivary Gland
+  -Skin
+  -Small Intestines
+  -Spleen
+  -Stomach
+  -Testis
+  -Thyroid
+  -Uterus
+  -Vagina
 
-Cancer
-**************
-Adrenal Gland
-Bladder
-Blood (general, AML)
-Brain (glioma)
-Breast
-Cervix
-Colon
-Endometrium
-Esophagus
-Eye
-Head and Neck Region
-Kidney
-Liver
-Lung (squamous, adenocarcinoma)
-Ovary
-Pancreas
-Paraganglia
-Prostate
-Rectum
-Skin
-Soft Tissue/Bone
-Stomach
-Testis
-Thymus
-Thyroid
-Uterus
+*Cancer
+  -Adrenal Gland
+  -Bladder
+  -Blood (general, AML)
+  -Brain (glioma)
+  -Breast
+  -Cervix
+  -Colon
+  -Endometrium
+  -Esophagus
+  -Eye
+  -Head and Neck Region
+  -Kidney
+  -Liver
+  -Lung (squamous, adenocarcinoma)
+  -Ovary
+  -Pancreas
+  -Paraganglia
+  -Prostate
+  -Rectum
+  -Skin
+  -Soft Tissue/Bone
+  -Stomach
+  -Testis
+  -Thymus
+  -Thyroid
+  -Uterus
