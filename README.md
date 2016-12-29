@@ -1,8 +1,8 @@
-#Mine the Cure
+#Mine the Cure (Disease Predictor)
 
 A basic but ongoing challenge in pharmaceutical development is the reliable identification of diseased patients and those who will respond to a given therapy. While efforts have been made to address these problems, most approaches have focused on improving accuracy rather than being cost-effective and/or scalable. As a result, the market is largely composed of many new diagnostic technologies with single-use applications, creating complexity. To consolidate, we focus on using one technology (“omics”) to build multiple predictive algorithms for medical states. Our algorithm development is fueled by mining public data repositories, leveraging a proprietary normalization technique, and then applying machine learning approaches to build life-changing diagnostics.  
 
-Open data has revolutionized medicine by empowering the public and academics to collaboratively solve incredibly complicated diseases. However, an obvious and frustrating limitation in leveraging open data stems from the discordance of compiling data from different sources, platforms, and preparations. Consequently, many researchers often participate and form large consortiums to pool standardized data based on strict guidelines. However, due to long-term commitments and overwhelming costs in generating data, participation is not always ideal or welcome. To overcome this, I have engineered a technique that normalizes omics data regardless of its origin. Compared to standard techniques, my method performs 15x better when identifying the same samples across multiple datasets (up to 6, n = 878). Along with borrowing insights and resources from the cancer field, I leverage this tool to mine publicly available omics data sets, normalize them, and then generate machine trained algorithms to develop diagnostics for patients suffering from variety of diseases including cancer and neuropathologies (with little to no cost).
+Open data has revolutionized medicine by empowering the public and academics to collaboratively solve incredibly complicated diseases. However, an obvious and frustrating limitation in leveraging open data stems from the discordance of compiling data from different sources, platforms, and preparations. Consequently, many researchers often participate and form large consortiums to pool standardized data based on strict guidelines. However, due to long-term commitments and overwhelming costs in generating data, participation is not always ideal or welcome. To overcome this, I have engineered a technique that normalizes omics data regardless of its origin. Compared to standard techniques, my method performs 15x better when identifying the same samples across multiple datasets (up to 6, n = 878). Along with borrowing insights and resources from the cancer field, I leverage this tool to mine publicly available omics data sets, normalize them, and then generate machine trained algorithms to develop diagnostics for patients suffering from variety of neuropathologies (with little to no cost).
 
 
 #Model Performance Results
@@ -11,8 +11,9 @@ Open data has revolutionized medicine by empowering the public and academics to 
 ###Algorithm: V9
 
 ```
-Sample Type: Human Patient Samples
+Function: Outputs the probability of various diseases given gene expression data
 
+Sample Type: Human Patient Samples
 Conditions Evaluated: 71
 
 Train Sample Size: 18,631
