@@ -31,7 +31,7 @@ Notable Sample Sources: GTeX, TCGA, ADNI, ArrayExpress, Gene Expression Omnibus 
 
 #Conditions
 
-#*Blood Tissue*
+###*Blood Tissue*
   -ALS
   -Stroke
   -Multiple Sclerosis
@@ -42,11 +42,11 @@ Notable Sample Sources: GTeX, TCGA, ADNI, ArrayExpress, Gene Expression Omnibus 
   -Mild Cognitive Impairment
   -Alzheimer's Disease
 
-#*Brain Tissue*
+####*Brain Tissue*
   -Parkinson's Disease
   -Alzheimer's Disease
 
-#*Normal Tissue*
+#####*Normal Tissue*
   -Brain
   -Adipose Tissue
   -Adrenal Gland
