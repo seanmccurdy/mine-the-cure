@@ -10,7 +10,7 @@ Open data has revolutionized medicine by empowering the public and academics to 
 
 ###Algorithm: V9
 
-<!--  
+```
 Sample Type: Human Patient Samples
 
 Conditions Evaluated: 71
@@ -28,24 +28,24 @@ Avg. Test Precision: 95.24%
 Avg. Validation Precision: 94.19%
 
 Notable Sample Sources: GTeX, TCGA, ADNI, ArrayExpress, Gene Expression Omnibus (GEO)
--->
+```
 
 #Conditions
 
 ###*Blood Tissue*
-  -ALS
-  -Stroke
-  -Multiple Sclerosis
-  -Huntington's Disease
-  -Parkinson's Disease
-  -Schizophrenia
-  -Major Depressive Disorder
-  -Mild Cognitive Impairment
-  -Alzheimer's Disease
+  - ALS
+  - Stroke
+  - Multiple Sclerosis
+  - Huntington's Disease
+  - Parkinson's Disease
+  - Schizophrenia
+  - Major Depressive Disorder
+  - Mild Cognitive Impairment
+  - Alzheimer's Disease
 
 ###*Brain Tissue*
-  -Parkinson's Disease
-  -Alzheimer's Disease
+  - Parkinson's Disease
+  - Alzheimer's Disease
 
 ####*Normal Tissue*
   -Brain
