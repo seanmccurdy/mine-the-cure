@@ -11,7 +11,6 @@ from mtc_library import *
 
 #activates tensorflow backend (faster than theano)
 subprocess.call('KERAS_BACKEND=tensorflow python -c "from keras import backend; print (backend._BACKEND)"', shell=True)
-###check###
 
 """
 program needs these files to run:
@@ -56,7 +55,7 @@ print("imported meta data...")
 y = meta.loc[merged_data.index.values].path_simple #keeps same order as transcriptome data
 x = merged_data
 x.index = merged_data.index.values
-low_freq_label_filter = y.isin(y.value_counts()[y.value_counts()>50].index.values)
+low_freq_label_filter = y.isin(y.value_counts()[y.value_counts()>40].index.values)
 y = y[low_freq_label_filter]
 x = x[low_freq_label_filter]
 x = x.as_matrix() #input x must be a numpy array for the classifier
@@ -78,7 +77,7 @@ x_test,x_valid,y_test,y_valid,labels_test,labels_valid = train_test_split( x_tes
                                                                            labels_test,
                                                                            test_size = 0.50,
                                                                            random_state = seed)
-
+DataFrame(y_factorized[1]).to_csv("output.csv")
 #confirms appropriate train/test split
 print("xtrain shape:",x_train.shape,"ytrain shape:",y_train.shape);
 print("xtest shape:",x_test.shape,"ytest shape:",y_test.shape);
@@ -94,7 +93,7 @@ model = deep_learning_class_model(  num_inputs = x_train.shape[1],
 model.fit(x_train,
           y_train,
           nb_epoch = 100,
-          batch_size = 100,
+          batch_size = 1000,
           verbose = 1,
           validation_data = (x_test,y_test))
 
@@ -126,4 +125,5 @@ ver_num = str(len(os.listdir("model"))+1)
 timestamp = str(t.strftime("%Y%m%d"))
 model_filename = "V"+ver_num+"_"+timestamp+".h5"
 model.save("model/"+model_filename)
+print("saving "+model_filename+"...")
 print("program complete...")
