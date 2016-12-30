@@ -31,7 +31,7 @@ Train Precision:        0.988
 Test Precision:         0.923
 Validation Precision:   0.925
 
-Notable Sample Sources: GTeX, TCGA, ADNI, ArrayExpress, Gene Expression Omnibus (GEO)
+Notable Sample Sources: GTEx, TCGA, ADNI, ArrayExpress, Gene Expression Omnibus (GEO)
 
 ```
 
