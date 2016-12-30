@@ -9,6 +9,8 @@ from keras.models import load_model
 
 filename = str(sys.argv[1])
 filemodel = str(sys.argv[2])
+if not os.path.exists("output"):
+    os.makedirs("output")
 
 #activates tensorflow backend for convnets
 sp.call('KERAS_BACKEND=tensorflow python -c "from keras import backend; print (backend._BACKEND)"', shell = True)
@@ -17,15 +19,15 @@ sp.call('/usr/local/bin/Rscript sig_score_processing.R ' + filename, shell = Tru
 
 print("loading input data...")
 model = load_model(filemodel)
-data = pd.read_csv("output_sig_summary.csv",
+data = pd.read_csv("output/input_sig_summary.csv",
                    encoding = "latin1",
                    index_col = 0)
 
-xlabel = pd.read_csv("feature_labels.csv",
+xlabel = pd.read_csv("inputs/feature_labels.csv",
                      header = -1,
                      squeeze = True)
 
-ylabel = pd.read_csv("output_labels.csv",
+ylabel = pd.read_csv("inputs/output_labels.csv",
                      header = -1,
                      squeeze = True)
 
@@ -37,5 +39,5 @@ predictions = DataFrame(model.predict(data.ix[:,xlabel.tolist()].as_matrix()),
                         columns = ylabel.tolist())
 
 print("saving predictions...")
-predictions.to_csv("model_predictions.csv")
+predictions.to_csv("output/model_predictions.csv")
 print("program complete...")
