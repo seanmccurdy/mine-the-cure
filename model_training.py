@@ -136,12 +136,15 @@ valid_precision = precision_score(y_true = y_valid.argmax(axis=1),
                                   y_pred = (model.predict(x_valid)).argmax(axis=1),
                                   average = "weighted")
 
+print("generating report...")
+
+if not os.path.exists("model"):
+    os.makedirs("model")
 
 ver_num = str(len(os.listdir("model"))+1)
 timestamp = str(t.strftime("%Y%m%d"))
 model_filename = "V"+ver_num+"_"+timestamp
 
-print("generating report...")
 if not os.path.exists("reports"):
     os.makedirs("reports")
 
@@ -175,8 +178,6 @@ sys.stdout.close()
 sys.stdout = temp
 
 print("saving model architecture and weights...")
-if not os.path.exists("model"):
-    os.makedirs("model")
 model.save("model/"+model_filename+".h5")
 print("model"+model_filename+".h5 saved...")
 print("program complete...")
