@@ -22,17 +22,16 @@ Test Size:  6229
 Validation Size: 6229
 
 Bootstrapped Accuracy:  0.063
-Train Accuracy:         0.986
-Test Accuracy:          0.923
-Validation Accuracy:    0.924
+Train Accuracy:         0.981
+Test Accuracy:          0.926
+Validation Accuracy:    0.925
 
 Bootstrapped Precision: 0.063
-Train Precision:        0.988
+Train Precision:        0.981
 Test Precision:         0.923
-Validation Precision:   0.925
+Validation Precision:   0.922
 
 Notable Sample Sources: GTEx, TCGA, ADNI, ArrayExpress, Gene Expression Omnibus (GEO)
-
 ```
 
 #Conditions
