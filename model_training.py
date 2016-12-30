@@ -82,6 +82,7 @@ x_test,x_valid,y_test,y_valid,labels_test,labels_valid = train_test_split( x_tes
                                                                            labels_test,
                                                                            test_size = 0.50,
                                                                            random_state = seed)
+
 #confirms appropriate train/test split
 print()
 print("xtrain shape:",x_train.shape,"ytrain shape:",y_train.shape);
@@ -135,6 +136,13 @@ test_precision = precision_score(y_true = y_test.argmax(axis=1),
 valid_precision = precision_score(y_true = y_valid.argmax(axis=1),
                                   y_pred = (model.predict(x_valid)).argmax(axis=1),
                                   average = "weighted")
+
+#feature/output labels
+Series(y_factorized[1]).to_csv("output_labels.csv",
+                               index= False)
+
+Series(merged_data.columns.values).to_csv("feature_labels.csv",
+                                          index= False)
 
 print("generating report...")
 
