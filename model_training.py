@@ -118,8 +118,8 @@ valid_accuracy = accuracy_score(y_true = y_valid.argmax(axis=1),
                                 y_pred = (model.predict(x_valid)).argmax(axis=1))
 
 random_precision = precision_score(y_true = y_train.argmax(axis=1),
-                                  y_pred = bootstrap_resample(y_train).argmax(axis=1),
-                                  average = "weighted")
+                                   y_pred = bootstrap_resample(y_train).argmax(axis=1),
+                                   average = "weighted")
 
 train_precision = precision_score(y_true = y_train.argmax(axis=1),
                                   y_pred = (model.predict(x_train)).argmax(axis=1),
@@ -134,10 +134,12 @@ valid_precision = precision_score(y_true = y_valid.argmax(axis=1),
                                   average = "weighted")
 
 #feature/output labels
-Series(y_factorized[1]).to_csv("output_labels.csv",
+if not os.path.exists("inputs"):
+    os.makedirs("inputs")
+Series(y_factorized[1]).to_csv("inputs/output_labels.csv",
                                index= False)
 
-Series(merged_data.columns.values).to_csv("feature_labels.csv",
+Series(merged_data.columns.values).to_csv("inputs/feature_labels.csv",
                                           index= False)
 
 print("generating report...")
