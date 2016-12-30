@@ -26,10 +26,6 @@ same directory as model_training_script
 
 """
 
-################################################################################
-################################################################################
-################################################################################
-
 print()
 print("libraries and functions loaded...")
 
@@ -95,8 +91,8 @@ print("building model...")
 print()
 
 #train model
-model = deep_learning_class_model(  num_inputs = x_train.shape[1],
-                                    num_outputs = y_train.shape[1])
+model = deep_learning_class_model(num_inputs = x_train.shape[1],
+                                  num_outputs = y_train.shape[1])
 
 model.fit(x_train,
           y_train,
