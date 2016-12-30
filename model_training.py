@@ -179,7 +179,7 @@ print("Train Precision:        {0:.3f}".format(train_precision))
 print("Test Precision:         {0:.3f}".format(test_precision))
 print("Validation Precision:   {0:.3f}".format(valid_precision))
 print()
-print("Notable Sample Sources: GTeX, TCGA, ADNI, ArrayExpress, Gene Expression Omnibus (GEO)")
+print("Notable Sample Sources: GTEx, TCGA, ADNI, ArrayExpress, Gene Expression Omnibus (GEO)")
 sys.stdout.close()
 sys.stdout = temp
 
