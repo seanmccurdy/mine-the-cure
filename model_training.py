@@ -35,7 +35,7 @@ data2 = pd.read_csv("train_data/merge_arysm_sig_summary.csv",
 data2.geo_id = [s.translate(str.maketrans('','',stringr.punctuation+' ')).lower() for s in data2.geo_id]
 data2.index = data2.filenames.values +"-"+data2.geo_id.values
 data2 = data2.iloc[:,2:]
-data2 = data2.groupby(data2.index).first()
+data2 = data2.groupby(data2.index).first() # remove duplicates
 
 print("imported train data...")
 
@@ -141,9 +141,6 @@ valid_precision = precision_score(y_true = y_valid.argmax(axis=1),
                                   y_pred = (model.predict(x_valid)).argmax(axis=1),
                                   average = "weighted")
 
-
-
-
 #feature/output labels
 if not os.path.exists("inputs"):
     os.makedirs("inputs")
@@ -192,6 +189,10 @@ print("Test Precision:         {0:.3f}".format(test_precision))
 print("Validation Precision:   {0:.3f}".format(valid_precision))
 print()
 print("Notable Sample Sources: GTEx, TCGA, ADNI, CCLE, CGP, CLCGP, Genentech, ArrayExpress, Gene Expression Omnibus (GEO)")
+print()
+print("----------Model Summary-----------")
+print()
+print(model.summary())
 sys.stdout.close()
 sys.stdout = temp
 
