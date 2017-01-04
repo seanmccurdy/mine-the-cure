@@ -8,30 +8,34 @@ Open data has revolutionized medicine by empowering the public and academics to 
 #Model Performance Results
 
 
-###Algorithm: V1
+###Algorithm: V20
 
 ```
+Date:  2017-01-04
+
 Function: Outputs the probability of various diseases given gene expression data
-Sample Type:  Human Patient Samples
-Conditions Evaluated:  71
+Cross-Platform Normalization Method: arysm
+Sample Type:  Human Patient RNA Samples
+Conditions Evaluated:  132
 
 -----------Statistics------------
 
-Train Size:  18687
-Test Size:  6229
-Validation Size: 6229
+Train Size:  18427
+Test Size:  6143
+Validation Size: 6143
 
-Bootstrapped Accuracy:  0.063
-Train Accuracy:         0.981
-Test Accuracy:          0.926
-Validation Accuracy:    0.925
+Bootstrapped Accuracy:  0.028
+Train Accuracy:         0.978
+Test Accuracy:          0.891
+Validation Accuracy:    0.883
 
-Bootstrapped Precision: 0.063
+Bootstrapped Precision: 0.029
 Train Precision:        0.981
-Test Precision:         0.923
-Validation Precision:   0.922
+Test Precision:         0.901
+Validation Precision:   0.894
 
-Notable Sample Sources: GTEx, TCGA, ADNI, ArrayExpress, Gene Expression Omnibus (GEO)
+Notable Sample Sources: GTEx, TCGA, ADNI, CCLE, CGP, CLCGP, Genentech, ArrayExpress, Gene Expression Omnibus (GEO)
+
 ```
 
 #Conditions
