@@ -11,28 +11,28 @@ Open data has revolutionized medicine by empowering the public and academics to 
 ###Algorithm: V20
 
 ```
-Date:  2017-01-04
+Date:  2017-01-07
 
 Function: Outputs the probability of various diseases given gene expression data
 Cross-Platform Normalization Method: arysm
 Sample Type:  Human Patient RNA Samples
-Conditions Evaluated:  132
+Conditions Evaluated:  139
 
 -----------Statistics------------
 
-Train Size:  18427
-Test Size:  6143
-Validation Size: 6143
+Train Size:  18964
+Test Size:  6322
+Validation Size: 6322
 
 Bootstrapped Accuracy:  0.028
-Train Accuracy:         0.978
-Test Accuracy:          0.891
-Validation Accuracy:    0.883
+Train Accuracy:         0.976
+Test Accuracy:          0.887
+Validation Accuracy:    0.878
 
-Bootstrapped Precision: 0.029
-Train Precision:        0.981
-Test Precision:         0.901
-Validation Precision:   0.894
+Bootstrapped Precision: 0.027
+Train Precision:        0.980
+Test Precision:         0.889
+Validation Precision:   0.885
 
 Notable Sample Sources: GTEx, TCGA, ADNI, CCLE, CGP, CLCGP, Genentech, ArrayExpress, Gene Expression Omnibus (GEO)
 
@@ -84,15 +84,16 @@ Notable Sample Sources: GTEx, TCGA, ADNI, CCLE, CGP, CLCGP, Genentech, ArrayExpr
 
 ###*Cancer*
   - Adrenal Gland
+  - Autonomic Ganglia (neuroblastoma)
   - Bladder
   - Blood (general, AML)
-  - Brain (glioma)
+  - Brain (glioma, glioblastoma)
   - Breast
   - Cervix
   - Colon
   - Endometrium
   - Esophagus
-  - Eye
+  - Eye (retinoblastoma, uveal melanoma)
   - Head and Neck Region
   - Kidney
   - Liver
