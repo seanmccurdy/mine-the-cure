@@ -9,10 +9,14 @@ from pandas import DataFrame,Series
 from sklearn.metrics import accuracy_score,precision_score
 from sklearn.cross_validation import train_test_split
 from keras.utils import np_utils
+from keras.callbacks import TensorBoard, History
 from mtc_library import *
+from keras import backend
 
-#activates tensorflow backend (faster than theano)
-subprocess.call('KERAS_BACKEND=tensorflow python -c "from keras import backend; print (backend._BACKEND)"', shell=True)
+# double checks tensorflow backend (faster than theano)
+# to change the backend find the keras.json in the .keras folder in $HOME or ~/ directory
+# it's hidden so make sure you can view hidden files!!
+print ("verified", backend._BACKEND)
 
 """
 program needs these files to run:
@@ -29,6 +33,19 @@ same directory as model_training_script
 
 print()
 print("libraries and functions loaded...")
+print("initializing directory...")
+
+if not os.path.exists("logs"):
+    os.makedirs("logs")
+if not os.path.exists("inputs"):
+    os.makedirs("inputs")
+if not os.path.exists("model"):
+    os.makedirs("model")
+if not os.path.exists("reports"):
+    os.makedirs("reports")
+
+
+print("loading training data...")
 
 data2 = pd.read_csv("train_data/merge_arysm_sig_summary.csv",
                     encoding = "latin1")
@@ -37,7 +54,7 @@ data2.index = data2.filenames.values +"-"+data2.geo_id.values
 data2 = data2.iloc[:,2:]
 data2 = data2.groupby(data2.index).first() # remove duplicates
 
-print("imported train data...")
+print(">>imported main train data...")
 
 data = pd.read_csv( "train_data/merge_arysm_sig_summary_supplement3_withCCL.csv",
                     encoding = "latin1")
@@ -45,7 +62,7 @@ data.geo_id = [s.translate(str.maketrans('','',stringr.punctuation+' ')).lower()
 data.index = data.filenames.values +"-"+data.geo_id.values
 data = data.iloc[:,2:]
 
-print("imported train data supplment...")
+print(">>imported train data supplment...")
 
 #removes columns with null values, some column names have weird characters
 merged_data = pd.concat([data2, data],
@@ -59,7 +76,7 @@ meta = pd.read_csv("train_data/meta_master.csv")
 meta.geo_id = [s.translate(str.maketrans('','',stringr.punctuation+' ')).lower() for s in meta.geo_id]
 meta.index = meta.filenames.values +"-"+meta.geo_id.values
 
-print("imported meta data...")
+print(">>imported meta data...")
 
 y = meta.loc[merged_data.index.values].path_simple #keeps same order as transcriptome data
 x = merged_data
@@ -89,6 +106,7 @@ x_test,x_valid,y_test,y_valid,labels_test,labels_valid = train_test_split( x_tes
 
 #confirms appropriate train/test split
 print()
+print("Splitting Summary...")
 print("xtrain shape:",x_train.shape,"ytrain shape:",y_train.shape);
 print("xtest shape:",x_test.shape,"ytest shape:",y_test.shape);
 print("xvalid shape:",x_valid.shape,"yvalid shape:",y_valid.shape);
@@ -102,12 +120,20 @@ print()
 model = deep_learning_class_model(num_inputs = x_train.shape[1],
                                   num_outputs = y_train.shape[1])
 
+#save results to TensorBoard; to launch use  type "tensorboard --logdir=logs/" in terminal
+tboard = TensorBoard(log_dir = './logs',
+                     histogram_freq = 10,
+                     write_graph = True)
+
+history = History()
+
 model.fit(x_train,
           y_train,
           nb_epoch = 200,
           batch_size = 100,
           verbose = 1,
-          validation_data = (x_test,y_test))
+          validation_data = (x_test,y_test),
+          callbacks = [tboard,history])
 
 print()
 print("model training complete...")
@@ -142,8 +168,7 @@ valid_precision = precision_score(y_true = y_valid.argmax(axis=1),
                                   average = "weighted")
 
 #feature/output labels
-if not os.path.exists("inputs"):
-    os.makedirs("inputs")
+
 Series(y_factorized[1]).to_csv("inputs/output_labels.csv",
                                index= False)
 
@@ -152,15 +177,9 @@ Series(merged_data.columns.values).to_csv("inputs/feature_labels.csv",
 
 print("generating report...")
 
-if not os.path.exists("model"):
-    os.makedirs("model")
-
 ver_num = str(len(os.listdir("model"))+1)
 timestamp = str(t.strftime("%Y%m%d"))
 model_filename = "V"+ver_num+"_"+timestamp
-
-if not os.path.exists("reports"):
-    os.makedirs("reports")
 
 temp = sys.stdout
 sys.stdout = open("reports/"+model_filename+".txt", 'w')
@@ -199,8 +218,7 @@ sys.stdout = temp
 print("saving model architecture and weights...")
 model.save("model/"+model_filename+".h5")
 print("model"+model_filename+".h5 saved...")
-print("program complete...")
-
+print("processing model performance and saving results...")
 #individual model
 DataFrame([precision_score(y_true = y_train.argmax(axis=1),
                 y_pred = (model.predict(x_train)).argmax(axis=1),average= None),
@@ -209,4 +227,8 @@ precision_score(y_true = y_test.argmax(axis=1),
 precision_score(y_true = y_valid.argmax(axis=1),
                 y_pred = (model.predict(x_valid)).argmax(axis=1),average= None)],
                 index=["train","test","validation"],
-                columns=Series(y_factorized[1])).T.to_csv("output/model_precision_results.csv")
+                columns=Series(y_factorized[1])).T.to_csv("output/"+model_filename+"_precision_results.csv")
+
+DataFrame(history.history).to_csv("output/"+model_filename+"_learning_curve.csv") #prints learning curve data
+
+print("program complete...")
