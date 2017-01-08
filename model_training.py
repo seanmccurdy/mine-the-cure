@@ -9,7 +9,7 @@ from pandas import DataFrame,Series
 from sklearn.metrics import accuracy_score,precision_score
 from sklearn.cross_validation import train_test_split
 from keras.utils import np_utils
-from keras.callbacks import TensorBoard, History
+from keras.callbacks import EarlyStopping, History
 from mtc_library import *
 from keras import backend
 
@@ -61,6 +61,7 @@ data = pd.read_csv( "train_data/merge_arysm_sig_summary_supplement3_withCCL.csv"
 data.geo_id = [s.translate(str.maketrans('','',stringr.punctuation+' ')).lower() for s in data.geo_id]
 data.index = data.filenames.values +"-"+data.geo_id.values
 data = data.iloc[:,2:]
+data = data.groupby(data.index).first() # remove duplicates
 
 print(">>imported train data supplment...")
 
@@ -81,15 +82,15 @@ print(">>imported meta data...")
 y = meta.loc[merged_data.index.values].path_simple #keeps same order as transcriptome data
 x = merged_data
 x.index = merged_data.index.values
-low_freq_label_filter = y.isin(y.value_counts()[y.value_counts()>=35].index.values)
+low_freq_label_filter = y.isin(y.value_counts()[y.value_counts()>=40].index.values)
 y = y[low_freq_label_filter]
+
 x = x[low_freq_label_filter]
 x = x.as_matrix() #input x must be a numpy array for the classifier
 
 #convert to one hot encoding for target variable
 y_factorized = y.factorize()
 y_onehot = np_utils.to_categorical(y_factorized[0],len(y_factorized[1]))
-
 
 # performs train test valid split on x,y, and labels
 x_train,x_test,y_train,y_test,labels_train,labels_test = train_test_split( x,
@@ -121,19 +122,18 @@ model = deep_learning_class_model(num_inputs = x_train.shape[1],
                                   num_outputs = y_train.shape[1])
 
 #save results to TensorBoard; to launch use  type "tensorboard --logdir=logs/" in terminal
-tboard = TensorBoard(log_dir = './logs',
-                     histogram_freq = 10,
-                     write_graph = True)
+# tboard = TensorBoard(log_dir = './logs',
+#                      histogram_freq = 10,
+#                      write_graph = True)
 
 history = History()
-
 model.fit(x_train,
           y_train,
           nb_epoch = 200,
           batch_size = 100,
           verbose = 1,
           validation_data = (x_test,y_test),
-          callbacks = [tboard,history])
+          callbacks = [history])
 
 print()
 print("model training complete...")
